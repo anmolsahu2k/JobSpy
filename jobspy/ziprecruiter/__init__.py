@@ -216,4 +216,6 @@ class ZipRecruiter(Scraper):
         Sends a session event to the API with device properties.
         """
         url = f"{self.api_url}/jobs-app/event"
-        self.session.post(url, data=get_cookie_data)
+        res = self.session.post(url, data=get_cookie_data)
+        if res.status_code != 200:
+            log.warning(f"ZipRecruiter cookie setup returned status {res.status_code}")

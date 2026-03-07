@@ -26,7 +26,7 @@ def find_job_info(jobs_data: list | dict) -> list | None:
 def find_job_info_initial_page(html_text: str):
     pattern = f'520084652":(' + r"\[.*?\]\s*])\s*}\s*]\s*]\s*]\s*]\s*]"
     results = []
-    matches = re.finditer(pattern, html_text)
+    matches = re.finditer(pattern, html_text, re.DOTALL)
 
     import json
 
